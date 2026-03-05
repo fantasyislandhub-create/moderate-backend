@@ -28,6 +28,3 @@ Backend API for Moderate Ustaz clothing e-commerce website.
 - `PUT /api/admin/products/:id` - Update product (protected)
 - `DELETE /api/admin/products/:id` - Delete product (protected)
 
-## Admin Credentials
-- Email: admin@moderateustaz.com
-- Password: admin123
