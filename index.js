@@ -29,13 +29,15 @@ const allowedOrigins = process.env.CORS_ORIGIN
   ? process.env.CORS_ORIGIN.split(',')
   : ['https://moderate-textile.vercel.app', 'http://localhost:3000', 'http://localhost:5173', 'https://www.moderatestextile.com'];
 
-app.use(cors({
+const corsOptions = {
   origin: allowedOrigins,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
-}));
-app.options('*', cors());
+};
+
+app.options('*', cors(corsOptions));
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Health check endpoints
@@ -60,9 +62,7 @@ app.get('/api/health', (req, res) => {
 // Routes
 app.use('/api/admin', authRoutes);
 app.use('/api/products', productRoutes);
-app.use('/api/admin/products', productRoutes); // For backward compatibility with some frontend calls if needed
 app.use('/api/combos', comboRoutes);
-app.use('/api/admin/combos', comboRoutes); // For backward compatibility
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

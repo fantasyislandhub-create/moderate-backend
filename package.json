@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "node index.js",
-    "build": "echo 'No build step required'",
+    "start": "node init && node index.js",
+    "dev": "node init && node index.js",
+    "build": "node init && echo 'No build step required'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
@@ -21,7 +21,7 @@
     "cloudinary": "^1.41.3",
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
-    "express": "^5.1.0",
+    "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.17.0",
     "multer": "^2.0.2",
